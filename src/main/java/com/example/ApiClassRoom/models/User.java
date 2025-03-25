@@ -1,26 +1,28 @@
 package com.example.ApiClassRoom.models;
-
-import com.example.ApiClassRoom.aids.UserType;
-import jakarta.persistence.Entity;
+import jakarta.persistence.*;
 
 @Entity
-
 public class User {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
     private String name;
     private String email;
     private String password;
-    private UserType userType;
+    private String phone;
+    private String userType;
 
     public User() {
     }
 
-    public User(Integer id, String name, String email, String password, UserType userType) {
+    public User(Integer id, String name, String email, String userType, String phone, String password) {
         this.id = id;
         this.name = name;
         this.email = email;
-        this.password = password;
         this.userType = userType;
+        this.phone = phone;
+        this.password = password;
     }
 
     public Integer getId() {
@@ -55,11 +57,19 @@ public class User {
         this.password = password;
     }
 
-    public UserType getUserType() {
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getUserType() {
         return userType;
     }
 
-    public void setUserType(UserType userType) {
+    public void setUserType(String userType) {
         this.userType = userType;
     }
 }
